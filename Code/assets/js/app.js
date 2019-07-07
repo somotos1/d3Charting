@@ -29,7 +29,7 @@ var chartGroup = svg.append("g")
 
 // Load data file using D3
 
-d3.csv("/assets/data/data.csv").then(function (usData) {
+d3.csv("assets/data/data.csv").then(function (usData) {
     // if (error) return console.warn(error);
     console.log(usData);
 
