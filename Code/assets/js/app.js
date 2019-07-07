@@ -38,13 +38,13 @@ d3.csv("/assets/data/data.csv").then(function (usData) {
         console.log(i, usData[i].state, usData[i].poverty, usData[i].healthcare);
         console.log(i, usData[i].obesity, usData[i].income);
     }
-    //Step 1: Parse Data/Cast as numbers
+    //Parse Data/Cast as numbers
     // ==============================
     usData.forEach(function (data) {
         data.healthcare = +data.healthcare;
         data.poverty = +data.poverty;
     });
-    // Step 2: Create scale functions
+    // Create scale functions
     // ==============================
     // Scale x to chart width
     var xLinearScale = d3.scaleLinear()
@@ -55,12 +55,12 @@ d3.csv("/assets/data/data.csv").then(function (usData) {
         .domain([0, d3.max(usData, d => d.healthcare)])
         .range([height, 0]);
 
-    // Step 3: Create axis functions
+    // Create axis functions
     // ==============================
     var bottomAxis = d3.axisBottom(xLinearScale);
     var leftAxis = d3.axisLeft(yLinearScale);
 
-    // Step 4: Append Axes to the chart
+    // Append Axes to the chart
     // ==============================
     chartGroup.append("g")
         .attr("transform", `translate(0, ${height})`)
@@ -69,7 +69,7 @@ d3.csv("/assets/data/data.csv").then(function (usData) {
     chartGroup.append("g")
         .call(leftAxis);
 
-    // Step 5: Create Circles
+    // Create Circles
     // ==============================
     var circlesGroup = chartGroup.selectAll("circle")
         .data(usData)
