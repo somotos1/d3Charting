@@ -30,7 +30,6 @@ var chartGroup = svg.append("g")
 // Load data file using D3
 
 d3.csv("/Code/assets/data/data.csv").then(function (usData) {
-    // if (error) return console.warn(error);
     console.log(usData);
 
     // Process csv file by looping through the data
@@ -87,7 +86,6 @@ console.log("creating tooltip")
 var toolTip = d3.tip()
     // Attach the class 'tooltip' to the html
     .attr("class", "tooltip")
-    // .offset([80, -60])
     // Assign text to show up on toolTip
     .html(function (data) {
         var state = data.state;
@@ -138,9 +136,7 @@ circlesGroup.on("mouseover", function (data) {
     // x-axis labels
     chartGroup
         .append("text")
-        .attr(
-            "transform",
-            `translate(${width / 2}, ${height + margin.top + 30})`)
+        .attr("transform", `translate(${width / 2}, ${height + margin.top + 30})`)
         .attr("class", "axisText")
         .text("In Poverty (%)");
 });
